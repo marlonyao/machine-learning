@@ -11811,6 +11811,16 @@ div#notebook {
 
 
 <div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/anaconda/lib/python2.7/site-packages/sklearn/cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  &#34;This module will be removed in 0.20.&#34;, DeprecationWarning)
+/anaconda/lib/python2.7/site-packages/sklearn/learning_curve.py:23: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the functions are moved. This module will be removed in 0.20
+  DeprecationWarning)
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Boston housing dataset has 489 data points with 4 variables each.
 </pre>
@@ -11851,23 +11861,23 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11894,7 +11904,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -12137,7 +12147,7 @@ Standard deviation of prices: $165,340.28
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>如果没有测试数据，不能评估模型的准确性，避免过度拟合。</p>
+<p>如果没有测试集，就无法知道模型对预测未知数据的表现如何，也就无法衡量模型表现。</p>
 
 </div>
 </div>
@@ -13204,7 +13214,7 @@ AElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-当训练集增加时训练分数下降，而测试分数上升。在初始阶段增加训练集对分数有明显促进作用，当训练集增加到一定程度，分数趋于平稳，最后增加测试集，对模型性能没有太大帮助。</p>
+当训练集增加时训练分数下降，而测试分数上升。在初始阶段增加训练集对分数有明显促进作用，当训练集增加到一定程度，分数趋于平稳，最后增加训练集，对模型性能没有太大帮助。</p>
 
 </div>
 </div>
@@ -13724,7 +13734,7 @@ Z4wxJmBY0jPGGBMwLOkZY4wJGP8P78Uyd+TlszoAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>grid search：选择不同的参数来训练模型，进行cross validation，选择最优的模型。比如上面的示例，根据depth的不同来训练模型。</p>
+<p>网格搜索算法是一种通过遍历给定的参数组合来优化模型表现的方法。比如这个项目的例子，使用决策树算法，只有一个参数depth，depth从1到10得到10个模型，每个模型用r2_score来评估它的表现，最终选择表现最优的表现。</p>
 
 </div>
 </div>
@@ -13746,7 +13756,7 @@ Z4wxJmBY0jPGGBMwLOkZY4wJGP8P78Uyd+TlszoAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>将数据集拆成K份，进行K轮train/test，每次选择一份作为test集，剩下的作为train集。没有cross-validation，就不能评估模型的好坏，按照训练的数据去评估，就会出现过度拟合。</p>
+<p>将训练集拆切成K份，通常是10份，进行K轮训练和验证，用K次验证的模型平均表现分数，来评估模型的好坏。这样做的好处是能够将所有数据都能够作为训练数据。</p>
 
 </div>
 </div>
@@ -13973,7 +13983,100 @@ Predicted selling price for Client 3&#39;s home: $942,666.67
 <p>第1个客户：$391,183.33
 第2个客户：$189,123.53
 第3个客户：$942,666.67</p>
-<p>看起来还OK，奇怪的是这个模型改变rooms对价格似乎没有影响。</p>
+<p>数据看起来是合理的，它们在合理范围内，在min和max价格之间。</p>
+<p>比如，和第一个预测数据最接近几个数据分别是：</p>
+<table>
+<thead><tr>
+<th>RM</th>
+<th>LSTAT</th>
+<th>PTRATIO</th>
+<th>MEDV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.628</td>
+<td>16.65</td>
+<td>14.7</td>
+<td>327600</td>
+</tr>
+<tr>
+<td>5.272</td>
+<td>16.14</td>
+<td>14.7</td>
+<td>275100</td>
+</tr>
+<tr>
+<td>6.004</td>
+<td>17.1</td>
+<td>15.2</td>
+<td>396900</td>
+</tr>
+</tbody>
+</table>
+<p>和预测价格391,183.33较接近。</p>
+<p>和第二个预测数据最接近的几个数据分别是：</p>
+<table>
+<thead><tr>
+<th>RM</th>
+<th>LSTAT</th>
+<th>PTRATIO</th>
+<th>MEDV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>31.99</td>
+<td>20.2</td>
+<td>155400</td>
+</tr>
+<tr>
+<td>4.368</td>
+<td>30.63</td>
+<td>20.2</td>
+<td>184800</td>
+</tr>
+<tr>
+<td>4.88</td>
+<td>30.62</td>
+<td>20.2</td>
+<td>214200</td>
+</tr>
+</tbody>
+</table>
+<p>和预测价格189,123.53相差也较小。</p>
+<p>和第三个预测数据最接近的几个数据分别是：</p>
+<table>
+<thead><tr>
+<th>RM</th>
+<th>LSTAT</th>
+<th>PTRATIO</th>
+<th>MEDV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7.47</td>
+<td>3.16</td>
+<td>13</td>
+<td>913500</td>
+</tr>
+<tr>
+<td>7.287</td>
+<td>4.08</td>
+<td>12.6</td>
+<td>699300</td>
+</tr>
+<tr>
+<td>7.61</td>
+<td>3.11</td>
+<td>14.7</td>
+<td>888300</td>
+</tr>
+</tbody>
+</table>
+<p>都比预测结果要小一点，但差距也并不大。</p>
 
 </div>
 </div>
@@ -14053,7 +14156,7 @@ Range in prices: $69,044.61
 <li>房价有可能比通胀涨得要快，至少中国的房价比通胀要快得多</li>
 <li>不够。人口数可能更能预测房价，还有比如经济状况。</li>
 <li>从问题10中看差距还不小。</li>
-<li>有可能不适用。</li>
+<li>不适用。不能用北京收集的数据去预测三四线城市的房价。</li>
 </ol>
 
 </div>
